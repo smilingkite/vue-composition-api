@@ -1,4 +1,5 @@
 Clone from [https://github.com/LinusBorg/composition-api-demos] with my own experiments. 
+Most notably: WIP getting the game of life (from https://github.com/Ijee/Game-of-Life-Vue2 ) working with the composition api. 
 
 # Demo App for the Composition API
 
