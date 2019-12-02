@@ -1,10 +1,12 @@
+Clone from [https://github.com/LinusBorg/composition-api-demos] with my own experiments. 
+
 # Demo App for the Composition API
 
 ## Context
 
 This repository contains a demo application meant to demonstrate various usecases and patterns that arise with the new composition API that Vuejs 3 will introduce.
 
-It is meant as an extension of a talk about the new API which I gave at [Vuejs London 2019](https://vuejs.london) on October 4th, 2019. You can find the slides [here](https://github.com/LinusBorg/talks/tree/master/2019-10-04%20Vuejs%20London).
+It is meant as an extension of a talk about the new API which I (LinusBorg) gave at [Vuejs London 2019](https://vuejs.london) on October 4th, 2019. You can find the slides [here](https://github.com/LinusBorg/talks/tree/master/2019-10-04%20Vuejs%20London).
 
 this repo represents the current state of my endeavor at playing with this API and seeing where it takes me, what patterns I can come up with etc., and I plan on adding new examples as I come up with / across them.
 
