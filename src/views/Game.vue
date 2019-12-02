@@ -18,7 +18,6 @@
 					:x-pos="indexX"
 					:y-pos="indexY"
 					:is-mouse-down="isMouseDown"
-					@wasUpdated="updateCellCount"
 				/>
 			</div>
 		</div>
@@ -26,7 +25,7 @@
 		<button
 			class="button"
 			title="play"
-			@click="play" >play</button>
+			@click="play()" >play</button>
 	</div>
 </template>
 
@@ -35,6 +34,7 @@
 	import GOLcell from '../components/GOLcell'; // ? waarom werkt @/components syntax niet?
 	import DemoImage from '@/components/DemoImage'; // waarom werkt @/components syntax hier?
 	import {setInterval, clearInterval} from 'timers';
+	import { unwrap } from '@/composables/utils'
 	// import useFileDnD from '../composables/use-file-dnd';
 	// import useGlobalDnD from '../composables/use-global-dnd';
 
@@ -48,8 +48,8 @@
 
 			let width = 46;
 			let height = 20;
-			let isMouseDown = reactive(false);
-			let isRunning = reactive(false);
+			let isMouseDown = ref(false);
+			let isRunning = ref(false);
 			const cellCalc = () => {
 				let gridList = [];
 				for (let i = 0; i < width; i++) {
@@ -84,6 +84,10 @@
 				let tempArr = [];
 				for (let i = 0; i < width; i++) {
 					tempArr[i] = [];
+					console.log('i', i)
+					gridList = unwrap(gridList)
+					console.log('update: gridlist, ' , gridList)
+					console.log('update: gridlist[i], ' , gridList[i])
 					for (let j = 0; j < height; j++) {
 						let status = gridList[i][j].isAlive;
 						let neighbours = getNeighbours(i, j);
@@ -144,9 +148,9 @@
 							if (
 								(offsetX != 0 || offsetY != 0) &&
 								newX >= 0 &&
-								newX < this.width &&
+								newX < width &&
 								newY >= 0 &&
-								newY < this.height &&
+								newY < height &&
 								gridList[posX + offsetX][posY + offsetY].isAlive == true
 							) {
 								neighbours++;
@@ -156,12 +160,12 @@
 				}
 				return neighbours;
 			};
-			const restartInterval = () => {
-				clearInterval(this.intervalID);
+			const restartInterval = (intervalID) => {
+				clearInterval(intervalID);
 				if (isRunning) {
-					this.intervalID = setInterval(
+					intervalID = setInterval(
 						update(),
-						50000 / 20,
+						50000 / 100,
 						'nextStep'
 					);
 				}
