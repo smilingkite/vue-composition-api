@@ -82,11 +82,11 @@
 
 			const update = () => {
 				let tempArr = [];
-				for (let i = 0; i < width; i++) {
-					tempArr[i] = [];
-					console.log('i', i)
 					gridList = unwrap(gridList)
 					console.log('update: gridlist, ' , gridList)
+				for (let i = 0; i < width; i++) {
+					tempArr[i] = [];
+					// console.log('i', i)
 					console.log('update: gridlist[i], ' , gridList[i])
 					for (let j = 0; j < height; j++) {
 						let status = gridList[i][j].isAlive;
@@ -162,18 +162,18 @@
 			};
 			const restartInterval = (intervalID) => {
 				clearInterval(intervalID);
-				if (isRunning) {
+				// if (isRunning) {
 					intervalID = setInterval(
 						update(),
 						50000 / 100,
 						'nextStep'
 					);
-				}
+				// }
 			}
 			const play = () => {
 				isRunning = !isRunning;
 				restartInterval();
-				console.log('play...')
+				console.log('play...' , isRunning);
 			}
 			return {
 				width,
